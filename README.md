@@ -17,7 +17,7 @@ data "http" "myip" {
 
 ### Components
 
-- vpc 部分使用 vpc resource 跟 vpc module 完成功能，但做到後面覺得這樣寫不一致，如果下次寫，應該會考慮整個 terraform 都用 module 或都用 source。
+- vpc 部分使用 vpc resource 跟 vpc module 完成功能。
 - WAF 部分使用 `aws_wafv2_web_acl` 這個 source，目前還不太確定跟舊版 `aws_waf_web_acl` 除了寫法上的差別外有什麼不同。
 - peering 部分使用 `aws_vpc_peering_connection` 並且設定 `auto_accept = true`，可以在同個帳號下自動 accept peering 的請求。
 - ec2 部分我把他包成 module，並且 ingress 簡單的設定成了開啟 `22` 跟 `80` port，如果要嚴格實踐的話，可能還要把 security group id 作為 variable 另外傳入。
